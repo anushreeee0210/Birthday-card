@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { serif: ['"Cormorant Garamond"', 'Georgia', 'serif'] },
+          letterSpacing: { widest2: '0.25em' }
+        }
+      }
+    }
+  </script> 
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="font-serif overflow-hidden">
+
+  <!-- ── HIDDEN THEME TOGGLE — tiny dot bottom-right ── -->
+  <button id="themeToggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+
+  <!-- ── PARTICLES ── -->
+  <canvas id="particleCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- ══ COVER ══ -->
+  <div id="cover" class="fixed inset-0 z-50 flex flex-col items-center justify-center">
+    <div class="cover-content text-center px-8 select-none">
+      <p class="text-sm tracking-widest2 uppercase mb-8 cover-line" style="animation-delay:0.2s">
+        a birthday letter, crafted with love
+      </p>
+
+
+      <!-- <h1 class="text-6xl md:text-8xl font-light italic leading-none mb-4 cover-line" style="animation-delay:0.5s">
+        Happy<br/>Birthday
+      </h1> -->
+
+
+      <h2 class="text-7xl md:text-9xl font-light leading-none mb-12 cover-line" style="animation-delay:0.8s">
+        Aleena
+      </h2>
+      <div class="w-16 h-px mx-auto mb-12 cover-line divider-line" style="animation-delay:1s"></div>
+      <button id="startBtn" onclick="startJourney()"
+        class="cover-line group relative text-sm tracking-widest2 uppercase border px-10 py-4 transition-all duration-500 theme-btn"
+        style="animation-delay:1.2s">
+        <span class="btn-fill"></span>
+        <span class="relative z-10 btn-label transition-colors duration-500">Open</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══ BOOK OVERLAY ══ -->
+  <div id="bookOverlay" class="fixed inset-0 z-40 hidden pointer-events-none">
+    <div id="pageLeft"  class="page-half left-0  origin-left"></div>
+    <div id="pageRight" class="page-half right-0 origin-right"></div>
+  </div>
+
+  <!-- ══ JOURNEY ══ -->
+  <main id="journey" class="fixed inset-0 overflow-y-scroll overflow-x-hidden z-10 opacity-0 transition-opacity duration-700" style="transition-delay:0.8s">
+
+    <!-- 1. HERO -->
+    <section class="min-h-screen flex flex-col items-center justify-center px-8 text-center relative section-main">
+      <span class="deco-dot top-16 left-12"></span>
+      <span class="deco-dot bottom-20 right-16" style="animation-delay:1.5s"></span>
+      <p class="reveal muted text-xs tracking-widest2 uppercase mb-10">scroll to relive our memories</p>
+      <h1 class="reveal text-7xl md:text-[10rem] font-light italic leading-[0.9] mb-6" style="transition-delay:0.1s">
+        Happy<br/>Birthday
+      </h1>
+      <div class="reveal w-24 h-px divider-line mx-auto mb-6" style="transition-delay:0.2s"></div>
+      <p class="reveal muted text-2xl md:text-3xl font-light italic max-w-md" style="transition-delay:0.3s">
+        to the one who makes every ordinary day feel like a gift.
+      </p>
+    </section>
+
+    <!-- 2. FIRST QUOTE -->
+    <section class="min-h-screen flex items-center justify-center px-8 md:px-20 section-alt">
+      <div class="max-w-2xl text-center">
+        <p class="reveal muted text-xs tracking-widest2 uppercase mb-8">a note from me</p>
+        <blockquote class="reveal text-3xl md:text-5xl font-light italic leading-snug" style="transition-delay:0.15s">
+          "Some friendships don't need grand gestures — they live in the quiet moments, the inside jokes, and the kind of comfort that feels like home."
+        </blockquote>
+        <div class="reveal w-10 h-px divider-line mx-auto mt-10" style="transition-delay:0.3s"></div>
+      </div>
+    </section>
+
+    <!-- 3. MEMORY CARDS -->
+    <section class="min-h-screen flex flex-col items-center justify-center px-8 py-24 section-main">
+      <p class="reveal muted text-xs tracking-widest2 uppercase mb-4">our moments</p>
+      <h2 class="reveal text-4xl md:text-6xl font-light italic mb-16" style="transition-delay:0.1s">The memories I keep</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px card-grid w-full max-w-4xl">
+        <div class="memory-card reveal p-10 flex flex-col gap-4" style="transition-delay:0s">
+          <div class="photo-placeholder"><img src="images/6.jpeg" class="w-full h-full object-cover" /></div>
+          <p class="muted text-xs tracking-widest2 uppercase">a memory i cherish...</p>
+          <p class="text-lg font-light leading-relaxed subtle italic">A random cafe from google where we shared our laughter and did so much fun things like face reading and palm reading.</p>
+        </div>
+        <div class="memory-card reveal p-10 flex flex-col gap-4" style="transition-delay:0.1s">
+          <div class="photo-placeholder"><img src="images/4.jpeg" class="w-full h-full object-cover" /></div>
+          <p class="muted text-xs tracking-widest2 uppercase">that one time we...</p>
+          <p class="text-lg font-light leading-relaxed subtle italic">We made our first sem-4 memories in Sai Chinese and it was our go to place for sure.</p>
+        </div>
+        <div class="memory-card reveal p-10 flex flex-col gap-4" style="transition-delay:0.2s">
+          <div class="photo-placeholder"><img src="images/7.jpeg" class="w-full h-full object-cover" /></div>
+          <p class="muted text-xs tracking-widest2 uppercase">something i love about you...</p>
+          <p class="text-lg font-light leading-relaxed subtle italic">The way you made me feel comfortable and cared. You listen to all my stories and you yourself shared few.</p>
+        </div>
+        <div class="memory-card reveal p-10 flex flex-col gap-4" style="transition-delay:0.3s">
+          <div class="photo-placeholder"><img src="images/5.jpeg" class="w-full h-full object-cover" /></div>
+          <p class="muted text-xs tracking-widest2 uppercase">i lookup to...</p>
+          <p class="text-lg font-light leading-relaxed subtle italic">You both have inspired me to have a friendship likes yours.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PHOTO STRIP -->
+    <section class="py-32 section-alt overflow-hidden">
+      <p class="reveal text-center muted text-xs tracking-widest2 uppercase mb-16">us, through the years</p>
+      <div class="strip-track">
+        <div class="strip-inner" id="stripInner">
+          <div class="strip-item"><img src="images/1.jpeg" class="w-full h-full object-cover" /></div>
+          <div class="strip-item"><img src="images/2.jpeg" class="w-full h-full object-cover" /></div>
+          <div class="strip-item"><img src="images/3.jpeg" class="w-full h-full object-cover" /></div>
+          <div class="strip-item"><img src="images/4.jpeg" class="w-full h-full object-cover" /></div>
+          <div class="strip-item"><img src="images/5.jpeg" class="w-full h-full object-cover" /></div>
+          <div class="strip-item"><img src="images/6.jpeg" class="w-full h-full object-cover" /></div>
+          <div class="strip-item"><img src="images/7.jpeg" class="w-full h-full object-cover" /></div>
+          <div class="strip-item"><img src="images/1.jpeg" class="w-full h-full object-cover" /></div>
+          <div class="strip-item"><img src="images/2.jpeg" class="w-full h-full object-cover" /></div>
+          <div class="strip-item"><img src="images/3.jpeg" class="w-full h-full object-cover" /></div>
+          <div class="strip-item"><img src="images/4.jpeg" class="w-full h-full object-cover" /></div>
+          <div class="strip-item"><img src="images/5.jpeg" class="w-full h-full object-cover" /></div>
+          <div class="strip-item"><img src="images/6.jpeg" class="w-full h-full object-cover" /></div>
+          <div class="strip-item"><img src="images/7.jpeg" class="w-full h-full object-cover" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. SECOND QUOTE -->
+    <section class="min-h-screen flex items-center justify-center px-8 md:px-20 section-main">
+      <div class="max-w-2xl text-center">
+        <p class="reveal muted text-xs tracking-widest2 uppercase mb-8">what i wish for you</p>
+        <blockquote class="reveal text-3xl md:text-5xl font-light italic leading-snug" style="transition-delay:0.15s">
+          "May this year bring you everything you have quietly hoped for, and a few things you never even thought to ask."
+        </blockquote>
+        <div class="reveal w-10 h-px divider-line mx-auto mt-10" style="transition-delay:0.3s"></div>
+      </div>
+    </section>
+
+    <!-- 6. BIRTHDAY WISH -->
+    <section class="min-h-screen flex flex-col items-center justify-center px-8 text-center section-alt">
+      <p class="reveal muted text-xs tracking-widest2 uppercase mb-8">from me to you</p>
+      <h2 class="reveal text-5xl md:text-7xl font-light italic mb-8" style="transition-delay:0.1s">
+        You deserve<br/>every beautiful thing.
+      </h2>
+      <p class="reveal muted text-xl font-light max-w-lg leading-relaxed mb-14" style="transition-delay:0.2s">
+        On this day and every day — thank you for being you, for being mine to call a friend, and for making the world a little softer just by being in it.
+      </p>
+      <button id="celebrateBtn" onclick="launchConfetti()"
+        class="reveal group relative text-sm tracking-widest2 uppercase border px-12 py-5 transition-all duration-500 theme-btn"
+        style="transition-delay:0.3s">
+        <span class="btn-fill"></span>
+        <span class="relative z-10 btn-label transition-colors duration-500">Celebrate</span>
+      </button>
+    </section>
+
+    <!-- 7. SIGN OFF -->
+    <section class="min-h-[60vh] flex flex-col items-center justify-center text-center px-8 py-20 section-main">
+      <p class="reveal muted text-xs tracking-widest2 uppercase mb-12">with all my love</p>
+      <p class="reveal text-5xl md:text-7xl font-light italic mb-4" style="transition-delay:0.15s">Happy Birthday,</p>
+      <p class="reveal text-5xl md:text-7xl font-light mb-14" style="transition-delay:0.25s">Aleenaaaaaa</p>
+      <div class="reveal w-16 h-px divider-line mx-auto mb-12" style="transition-delay:0.35s"></div>
+      <p class="reveal muted text-sm tracking-widest2 italic" style="transition-delay:0.45s">— urs anushree</p>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
